@@ -1,58 +1,36 @@
-# Task-Manager
+# 🧠 Task Manager in C++
 
-# 🗂️ Task Manager using Linked Lists in C++
+This project implements a simple **task manager** using:
 
-This C++ project implements a simple task management system using **singly and doubly linked lists**. It organizes tasks into two categories: **active** and **completed**. Each category is managed with different types of linked list structures for demonstration purposes.
+- 🟩 **Doubly Linked List** for active tasks
+- ✅ **Singly Linked List** for completed tasks
 
----
+## 🚀 Features
 
-## 🔧 Features
+- Add/remove active tasks (front or end)
+- Mark last active task as completed
+- Print active tasks (Head→Tail / Tail→Head)
+- Print completed tasks
 
-### ✅ Completed Tasks
-- Represented using a **singly linked list** (`task` class).
-- Supports insertion and traversal of completed tasks.
-- Each task has:
-  - `TaskID`
-  - `Priority` pointer (link to the next task)
-
-### 🔄 Active Tasks
-- Managed using a **doubly linked list** (`dlink` class inside `active`).
-- Supports:
-  - Insertion at the front and rear
-  - Deletion from front and rear
-  - Bidirectional traversal (head-to-tail and tail-to-head)
-
----
-
-## 🏗️ Classes Overview
-
-### `task`
-Represents a node in the completed task list. Each node holds a task ID and a pointer to the next node (`Priority`).
-
-### `complete`
-Manages the singly linked list of completed tasks. Contains:
-- `insertion()`: Adds a new task to the list.
-- `print()`: Displays completed tasks.
-
-### `active`
-Manages the doubly linked list of active tasks via the nested `dlink` class. Contains:
-- `insertionFirst(int k)`: Inserts at head.
-- `insertionLast(int k)`: Inserts at tail.
-- `deleteAtFirst()`: Deletes from head.
-- `deleteAtLast()`: Deletes from tail.
-- `printHeadtoTail()`, `printTailtoHead()`: Traversal functions.
-
----
-
-## 🧪 Example Usage
+## 🔧 Data Structures
 
 ```cpp
-complete completeTask;
-active activeTask;
+struct dl {
+    int value;
+    dl* pre, *next;
+};
 
-completeTask.insertion(t1, 1);         // Insert completed task
+struct task {
+    int TaskId;
+    task* priority; // next task
+};
+🛠️ Key Functions
+insertAtFirst() / insertAtLast()
 
-activeTask.insertionFirst(5);          // Add active task at front
-activeTask.insertionFirst(6);
-activeTask.insertionLast(7);           // Add at rear
-activeTask.insertionLast(8);
+deleteAtFirst() / deleteAtLast()
+
+insertion() → move last active task to completed
+
+HeadToTail() / TailToHead()
+
+print() → show completed tasks
